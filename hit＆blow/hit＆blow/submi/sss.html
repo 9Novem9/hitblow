@@ -291,14 +291,12 @@
     function createRandomTarget() {
       target.splice(0);
 
-      // TODO 正解となる数字をランダムに生成すること
-      // TODO 3つの0～9で構成された配列(かぶりなし)が生成されること
-      // 例: [8,2,0]
-
-      // この3行は削除する
-      target.push(0);
-      target.push(1);
-      target.push(2);
+    while(target.length < 3){
+      const randomNumber = Math.floor(Math.random() * 10);
+      if(!target.includes(randomNumber)){
+        target.push(randomNumber);
+      }
+    }
     }
 
     function input(event) {
@@ -349,8 +347,13 @@
       let hit = 0;
       let blow = 0;
 
-      // TODO targetとinputsを比較しhitとblowをカウントすること
-
+      for (let i = 0; i < 3; i++){
+        if (target[i] === parseInt(inputs[i])){
+          hit++;
+        }else if (target.includes(parseInt(inputs[i]))){
+          blow++;
+      }
+    }
       const result = {
         inputs: inputs.concat(),
         hit: hit,
