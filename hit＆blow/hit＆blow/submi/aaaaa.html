@@ -291,8 +291,9 @@
     function createRandomTarget() {
       target.splice(0);
 
-    while(target.length < 3){
-      const randomNumber = Math.floor(Math.random() * 10);
+      while(target.length < 3){
+      const randomNumber = Random random = new Random();
+      int randomValue = random.nextInt(10);
       if(!target.includes(randomNumber)){
         target.push(randomNumber);
       }
@@ -333,11 +334,11 @@
         inputs.splice(0);
         reload();
         if (clear) {
-          alert(`クリア\n正解は${target}`);
+          alert(`CLEAR!!\n正解は${target}`);
           reset();
         }
         if (answerLimit <= results.length) {
-          alert(`残念\n正解は${target}`);
+          alert(`失敗...\n正解は${target}`);
           reset();
         }
       }
@@ -347,13 +348,8 @@
       let hit = 0;
       let blow = 0;
 
-      for (let i = 0; i < 3; i++){
-        if (target[i] === parseInt(inputs[i])){
-          hit++;
-        }else if (target.includes(parseInt(inputs[i]))){
-          blow++;
-      }
-    }
+      // TODO targetとinputsを比較しhitとblowをカウントすること
+
       const result = {
         inputs: inputs.concat(),
         hit: hit,
